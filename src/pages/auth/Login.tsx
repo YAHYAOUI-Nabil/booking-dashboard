@@ -2,8 +2,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import bgImage from "../../assets/booking-bg.jpg";
+import { useLoginMutation } from "../../app/api/public/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../../app/store/authSlice";
 
 const Login = () => {
+  const [login] = useLoginMutation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {
     control,
     formState: { errors, isSubmitting },
@@ -23,8 +30,14 @@ const Login = () => {
     ),
   });
 
-  const submit = (data: any) => {
-    console.log(data);
+  const submit = async (values: any) => {
+    try {
+      const user = await login(values).unwrap();
+      dispatch(setCurrentUser(user));
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
