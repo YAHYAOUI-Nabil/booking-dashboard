@@ -88,8 +88,8 @@ const MenuItems = () => {
           to={link.path}
           className={({ isActive }) =>
             [
-              isActive ? "text-white bg-[#0033FF] hover:bg-[#0033FF]" : "",
-              "flex flex-row gap-4 py-3 rounded-md hover:bg-black/15",
+              isActive ? "text-white bg-[#0033FF]" : "hover:bg-black/15",
+              "flex flex-row gap-4 py-3 rounded-md ",
             ].join(" ")
           }
         >

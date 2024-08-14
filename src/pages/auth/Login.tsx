@@ -3,11 +3,14 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import bgImage from "../../assets/booking-bg.jpg";
 import { useLoginMutation } from "../../app/api/public/auth";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../app/store/authSlice";
+import { useEffect } from "react";
+import { useAuth } from "../../app/hooks/useAuth";
 
 const Login = () => {
+  const auth = useAuth();
   const [login] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,12 +36,19 @@ const Login = () => {
   const submit = async (values: any) => {
     try {
       const user = await login(values).unwrap();
+      sessionStorage.setItem("usersession", "user.accessToken");
+      localStorage.setItem("userlocal", "user.accessToken");
+
       dispatch(setCurrentUser(user));
       navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (auth.user) window.location.href = "/";
+  }, []);
 
   return (
     <div

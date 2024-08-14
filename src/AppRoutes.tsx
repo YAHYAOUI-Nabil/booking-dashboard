@@ -1,6 +1,6 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useAuth } from "./app/hooks/useAuth";
+import { Routes, Route } from "react-router-dom";
+import PrivateOutlet from "./utils/PrivateOutlet";
 
 const AuthenticationPage = React.lazy(() => import("./pages/auth/Login"));
 const MainLayout = React.lazy(() => import("./pages/dashboard/MainLayout"));
@@ -37,117 +37,121 @@ const Reviews = React.lazy(
 );
 
 const AppRoutes = () => {
-  const auth = useAuth();
   return (
     <Routes>
       <Route
         element={
-          auth.user ? (
-            <Navigate to="/" />
-          ) : (
-            <React.Suspense fallback={null}>
-              <AuthenticationPage />
-            </React.Suspense>
-          )
+          <React.Suspense fallback={null}>
+            <AuthenticationPage />
+          </React.Suspense>
         }
         path="/login"
       />
       <Route
+        path="/"
         element={
           <React.Suspense fallback={null}>
-            <MainLayout />
+            <PrivateOutlet />
           </React.Suspense>
         }
-        path="/"
       >
         <Route
           element={
             <React.Suspense fallback={null}>
-              <Home />
+              <MainLayout />
             </React.Suspense>
           }
-          index
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Guests />
-            </React.Suspense>
-          }
-          path="/guests"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Bookings />
-            </React.Suspense>
-          }
-          path="/bookings"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Rooms />
-            </React.Suspense>
-          }
-          path="/rooms"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Users />
-            </React.Suspense>
-          }
-          path="/users"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Deals />
-            </React.Suspense>
-          }
-          path="/deals"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Discounts />
-            </React.Suspense>
-          }
-          path="/discounts"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Hotels />
-            </React.Suspense>
-          }
-          path="/hotels"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Locations />
-            </React.Suspense>
-          }
-          path="/locations"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Payments />
-            </React.Suspense>
-          }
-          path="/payments"
-        />
-        <Route
-          element={
-            <React.Suspense fallback={null}>
-              <Reviews />
-            </React.Suspense>
-          }
-          path="/reviews"
-        />
+          path="/"
+        >
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Home />
+              </React.Suspense>
+            }
+            index
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Guests />
+              </React.Suspense>
+            }
+            path="/guests"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Bookings />
+              </React.Suspense>
+            }
+            path="/bookings"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Rooms />
+              </React.Suspense>
+            }
+            path="/rooms"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Users />
+              </React.Suspense>
+            }
+            path="/users"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Deals />
+              </React.Suspense>
+            }
+            path="/deals"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Discounts />
+              </React.Suspense>
+            }
+            path="/discounts"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Hotels />
+              </React.Suspense>
+            }
+            path="/hotels"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Locations />
+              </React.Suspense>
+            }
+            path="/locations"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Payments />
+              </React.Suspense>
+            }
+            path="/payments"
+          />
+          <Route
+            element={
+              <React.Suspense fallback={null}>
+                <Reviews />
+              </React.Suspense>
+            }
+            path="/reviews"
+          />
+        </Route>
       </Route>
     </Routes>
   );
