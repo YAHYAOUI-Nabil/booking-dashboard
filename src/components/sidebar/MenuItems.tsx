@@ -1,13 +1,7 @@
-import {
-  MdDashboard,
-  MdBedroomParent,
-  MdOutlineDiscount,
-  MdReviews,
-  MdOutlinePayments,
-} from "react-icons/md";
-import { FaRestroom, FaHotel, FaIdeal } from "react-icons/fa";
-import { FaMapLocationDot, FaPeopleGroup } from "react-icons/fa6";
+import { GrArticle, GrDocumentPerformance } from "react-icons/gr";
+import { MdDatasetLinked } from "react-icons/md";
 import { GrUserAdmin } from "react-icons/gr";
+import { AiFillProduct } from "react-icons/ai";
 import { useAppContext } from "../../app/contexts/AppContext";
 import { NavLink } from "react-router-dom";
 
@@ -17,70 +11,34 @@ const MenuItems = () => {
     <div className="flex flex-col gap-1">
       {[
         {
-          key: "dashboard",
+          key: "kpi",
           path: "/",
-          name: "Dashboard",
-          icon: <MdDashboard className="h-6 w-6" />,
+          name: "KPI",
+          icon: <GrDocumentPerformance className="h-6 w-6" />,
         },
         {
-          key: "rooms",
-          path: "/rooms",
-          name: "Rooms",
-          icon: <MdBedroomParent className="h-6 w-6" />,
+          key: "products",
+          path: "/products",
+          name: "Products",
+          icon: <AiFillProduct className="h-6 w-6" />,
         },
         {
-          key: "bookings",
-          path: "/bookings",
-          name: "Bookings",
-          icon: <FaRestroom className="h-6 w-6" />,
+          key: "articles",
+          path: "/articles",
+          name: "Articles",
+          icon: <GrArticle className="h-6 w-6" />,
         },
         {
-          key: "guests",
-          path: "/guests",
-          name: "Guests",
-          icon: <FaPeopleGroup className="h-6 w-6" />,
+          key: "Visited products",
+          path: "/visited-products",
+          name: "Visited products",
+          icon: <MdDatasetLinked className="h-6 w-6" />,
         },
         {
           key: "users",
           path: "/users",
           name: "Administrators",
           icon: <GrUserAdmin className="h-6 w-6" />,
-        },
-        {
-          key: "hotels",
-          path: "/hotels",
-          name: "Hotels",
-          icon: <FaHotel className="h-6 w-6" />,
-        },
-        {
-          key: "discounts",
-          path: "/discounts",
-          name: "Discounts",
-          icon: <MdOutlineDiscount className="h-6 w-6" />,
-        },
-        {
-          key: "locations",
-          path: "/locations",
-          name: "Locations",
-          icon: <FaMapLocationDot className="h-6 w-6" />,
-        },
-        {
-          key: "deals",
-          path: "/deals",
-          name: "Deals",
-          icon: <FaIdeal className="h-6 w-6" />,
-        },
-        {
-          key: "payments",
-          path: "/payments",
-          name: "Payments",
-          icon: <MdOutlinePayments className="h-6 w-6" />,
-        },
-        {
-          key: "reviews",
-          path: "/reviews",
-          name: "Reviews",
-          icon: <MdReviews className="h-6 w-6" />,
         },
       ].map((link) => (
         <NavLink

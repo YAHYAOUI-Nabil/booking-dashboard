@@ -17,16 +17,6 @@ const ProfileDropdown = () => {
         >
           <MenuItem>
             <button className="group flex w-full items-center gap-2 py-1.5 px-3 hover:bg-[#0033FF] hover:text-white">
-              Profile
-            </button>
-          </MenuItem>
-          <MenuItem>
-            <button className="group flex w-full items-center gap-2 py-1.5 px-3 hover:bg-[#0033FF] hover:text-white">
-              Settings
-            </button>
-          </MenuItem>
-          <MenuItem>
-            <button className="group flex w-full items-center gap-2 py-1.5 px-3 hover:bg-[#0033FF] hover:text-white">
               Logout
             </button>
           </MenuItem>

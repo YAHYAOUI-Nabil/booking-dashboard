@@ -10,9 +10,6 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-10">
         <div>
-          <Search />
-        </div>
-        <div>
           <Profile />
         </div>
       </div>

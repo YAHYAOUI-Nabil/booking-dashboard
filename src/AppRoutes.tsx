@@ -4,36 +4,18 @@ import PrivateOutlet from "./utils/PrivateOutlet";
 
 const AuthenticationPage = React.lazy(() => import("./pages/auth/Login"));
 const MainLayout = React.lazy(() => import("./pages/dashboard/MainLayout"));
-const Guests = React.lazy(
-  () => import("./pages/dashboard/components/guests/Guests")
+const Kpi = React.lazy(() => import("./pages/dashboard/components/kpi"));
+const Products = React.lazy(
+  () => import("./pages/dashboard/components/products")
 );
-const Home = React.lazy(() => import("./pages/dashboard/components/home/Home"));
-const Bookings = React.lazy(
-  () => import("./pages/dashboard/components/bookings/Bookings")
+const Articles = React.lazy(
+  () => import("./pages/dashboard/components/articles")
 );
-const Rooms = React.lazy(
-  () => import("./pages/dashboard/components/rooms/Rooms")
+const VistedProducts = React.lazy(
+  () => import("./pages/dashboard/components/productsVisited")
 );
 const Users = React.lazy(
   () => import("./pages/dashboard/components/users/Users")
-);
-const Deals = React.lazy(
-  () => import("./pages/dashboard/components/deals/Deals")
-);
-const Discounts = React.lazy(
-  () => import("./pages/dashboard/components/discounts/Discounts")
-);
-const Hotels = React.lazy(
-  () => import("./pages/dashboard/components/hotels/Hotels")
-);
-const Locations = React.lazy(
-  () => import("./pages/dashboard/components/locations/Locations")
-);
-const Payments = React.lazy(
-  () => import("./pages/dashboard/components/payments/Payments")
-);
-const Reviews = React.lazy(
-  () => import("./pages/dashboard/components/reviews/Reviews")
 );
 
 const AppRoutes = () => {
@@ -66,35 +48,20 @@ const AppRoutes = () => {
           <Route
             element={
               <React.Suspense fallback={null}>
-                <Home />
+                <Kpi />
               </React.Suspense>
             }
-            index
+            path="/"
           />
           <Route
             element={
               <React.Suspense fallback={null}>
-                <Guests />
+                <Products />
               </React.Suspense>
             }
-            path="/guests"
+            path="/products"
           />
-          <Route
-            element={
-              <React.Suspense fallback={null}>
-                <Bookings />
-              </React.Suspense>
-            }
-            path="/bookings"
-          />
-          <Route
-            element={
-              <React.Suspense fallback={null}>
-                <Rooms />
-              </React.Suspense>
-            }
-            path="/rooms"
-          />
+
           <Route
             element={
               <React.Suspense fallback={null}>
@@ -106,50 +73,18 @@ const AppRoutes = () => {
           <Route
             element={
               <React.Suspense fallback={null}>
-                <Deals />
+                <Articles />
               </React.Suspense>
             }
-            path="/deals"
+            path="/articles"
           />
           <Route
             element={
               <React.Suspense fallback={null}>
-                <Discounts />
+                <VistedProducts />
               </React.Suspense>
             }
-            path="/discounts"
-          />
-          <Route
-            element={
-              <React.Suspense fallback={null}>
-                <Hotels />
-              </React.Suspense>
-            }
-            path="/hotels"
-          />
-          <Route
-            element={
-              <React.Suspense fallback={null}>
-                <Locations />
-              </React.Suspense>
-            }
-            path="/locations"
-          />
-          <Route
-            element={
-              <React.Suspense fallback={null}>
-                <Payments />
-              </React.Suspense>
-            }
-            path="/payments"
-          />
-          <Route
-            element={
-              <React.Suspense fallback={null}>
-                <Reviews />
-              </React.Suspense>
-            }
-            path="/reviews"
+            path="/visited-products"
           />
         </Route>
       </Route>
