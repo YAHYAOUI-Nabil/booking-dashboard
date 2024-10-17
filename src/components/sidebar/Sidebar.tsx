@@ -1,5 +1,4 @@
 import { useAppContext } from "../../app/contexts/AppContext";
-import logo from "../../assets/booking-logo.png";
 import AdminMenu from "./AdminMenu";
 import MenuItems from "./MenuItems";
 

@@ -4,7 +4,7 @@ import { FaRegCircleCheck, FaCircleCheck } from "react-icons/fa6";
 
 const ManageProducts = (props: { products: any }) => {
   const { products } = props;
-  const renderUpSell = products?.map((product, index) => (
+  const renderUpSell = products?.map((product: any) => (
     <>
       <tr
         key={product._id}

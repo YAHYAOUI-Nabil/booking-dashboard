@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { BsXCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-// import { useCreateAdMutation } from "../../app/api/private/ad";
 import toast, { Toaster } from "react-hot-toast";
 
 const AddProduct = () => {
-  // const [createAd, { isLoading, isError }] = useCreateAdMutation();
   const [apiUrl, setApiUrl] = useState("");
   const navigate = useNavigate();
   const {

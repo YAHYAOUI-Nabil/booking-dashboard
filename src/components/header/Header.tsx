@@ -1,5 +1,4 @@
 import Profile from "./Profile";
-import Search from "./Search";
 import SidebarButton from "./SidebarButton";
 
 const Header = () => {
