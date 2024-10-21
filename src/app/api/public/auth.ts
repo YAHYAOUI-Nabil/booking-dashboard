@@ -6,7 +6,13 @@ export const authApi = publicApi.injectEndpoints({
     login: builder.mutation<User, { username: string; password: string }>({
       query: (arg) => ({ url: "/auth/login", method: "POST", data: arg }),
     }),
+    logout: builder.mutation<void, void>({
+      query: () => ({
+        url: "/auth/logout",
+        method: "POST",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useLogoutMutation } = authApi;

@@ -6,17 +6,21 @@ const Sidebar = () => {
   const { showSidebarMenu } = useAppContext();
   return (
     <div
-      className={`p-4 h-screen bg-[#121F25] text-white transition-all ease-in-out duration-500 overflow-y-auto ${
+      className={`pb-4 h-screen bg-white text-black font-medium transition-all ease-in-out duration-500 overflow-y-auto ${
         showSidebarMenu ? "w-72 min-w-72" : "w-20 min-w-20"
       }`}
     >
       <div className="flex flex-col justify-between h-full gap-4">
         <div className="flex flex-col gap-4">
-          <div className="flex flex-row gap-4 items-center pb-4 border-b border-gray-200">
+          <div
+            className={`flex flex-row gap-4 items-center h-16 min-h-16 px-4 border-b border-[#EEEEEE] ${
+              showSidebarMenu ? "justify-start" : "justify-center"
+            } `}
+          >
             <img
-              src={`/public/shop4them-logo.png`}
+              src={`/shop4them-logo.png`}
               alt="Logo"
-              className="w-8"
+              className="w-8 rounded-full border border-gray-200"
             />
             {showSidebarMenu && (
               <svg
@@ -141,7 +145,7 @@ const Sidebar = () => {
           </div>
           <MenuItems />
         </div>
-        <div className="flex flex-row gap-4 items-center">
+        <div className="flex flex-row gap-4 items-center px-4">
           <AdminMenu />
         </div>
       </div>

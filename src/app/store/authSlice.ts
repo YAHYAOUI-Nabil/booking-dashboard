@@ -15,11 +15,15 @@ export const authSlice = createSlice({
     unsetCurrentUser: (state) => {
       state.currentUser = null;
     },
+    updateToken: (state, action: PayloadAction<User>) => {
+      state.currentUser = action.payload;
+    },
   },
 });
 export default authSlice.reducer;
 
-export const { setCurrentUser, unsetCurrentUser } = authSlice.actions;
+export const { setCurrentUser, unsetCurrentUser, updateToken } =
+  authSlice.actions;
 
 export const selectAuthState = (rootState: RootState) => rootState.auth;
 

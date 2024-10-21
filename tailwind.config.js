@@ -7,6 +7,10 @@ export default {
       transitionTimingFunction: {
         "in-expo": "cubic-bezier(0.4, 0, 0.2, 1)",
       },
+      colors: {
+        bgFrom: "#2581AF",
+        bgTo: "#16A7A0",
+      },
     },
   },
   plugins: [],

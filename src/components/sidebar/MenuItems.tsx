@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 const MenuItems = () => {
   const { showSidebarMenu } = useAppContext();
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 px-4">
       {[
         {
           key: "kpi",
@@ -46,8 +46,12 @@ const MenuItems = () => {
           to={link.path}
           className={({ isActive }) =>
             [
-              isActive ? "text-white bg-[#0033FF]" : "hover:bg-black/15",
-              "flex flex-row gap-4 py-3 rounded-md ",
+              isActive
+                ? "text-white bg-gradient-to-r from-bgFrom to-bgTo"
+                : "hover:bg-black/15",
+              `flex flex-row gap-4 py-3 rounded-md ${
+                showSidebarMenu ? "justify-start" : "justify-center"
+              } `,
             ].join(" ")
           }
         >

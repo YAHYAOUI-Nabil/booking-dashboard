@@ -14,9 +14,7 @@ const Articles = React.lazy(
 const VistedProducts = React.lazy(
   () => import("./pages/dashboard/components/productsVisited")
 );
-const Users = React.lazy(
-  () => import("./pages/dashboard/components/users/Users")
-);
+const Users = React.lazy(() => import("./pages/dashboard/components/users"));
 
 const AppRoutes = () => {
   return (

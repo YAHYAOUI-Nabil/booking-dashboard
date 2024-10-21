@@ -3,7 +3,7 @@ import SidebarButton from "./SidebarButton";
 
 const Header = () => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between sticky top-0 z-10 bg-white h-16 min-h-16 px-8">
       <div>
         <SidebarButton />
       </div>

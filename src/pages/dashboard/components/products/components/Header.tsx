@@ -3,7 +3,12 @@ import CommonPopup from "../../../../../components/CommonPopup";
 import { useState } from "react";
 import AddProduct from "./AddProduct";
 
-const Header = () => {
+interface HeaderProps {
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Header: React.FC<HeaderProps> = ({ setSearchQuery, searchQuery }) => {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
   const handleOpenPopup = () => {
@@ -20,8 +25,10 @@ const Header = () => {
           <div className="">
             <input
               type="text"
-              className="border-2 border-gray-300 focus:border-[#0033FF] outline-none py-2 px-4 rounded-md "
+              className="border-2 border-gray-300 focus:border-bgTo outline-none py-2 px-4 rounded-md "
               placeholder="Search products"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
           <div className="">
@@ -34,7 +41,7 @@ const Header = () => {
         <div className="">
           <button
             onClick={handleOpenPopup}
-            className="px-4 py-2 bg-[#0033FF] text-white font-medium text-lg rounded-md"
+            className="px-4 py-2 bg-gradient-to-r from-bgFrom to-bgTo text-white font-medium text-lg rounded-md"
           >
             Add product
           </button>

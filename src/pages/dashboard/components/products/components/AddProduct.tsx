@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { useCreateProductMutation } from "../../../../../app/api/private/product";
 
 const AddProduct = () => {
+  const [createProduct] = useCreateProductMutation();
   const [apiUrl, setApiUrl] = useState("");
   const navigate = useNavigate();
   const {
@@ -16,8 +18,7 @@ const AddProduct = () => {
   const submit = async (values: any) => {
     try {
       const formData = { ...values, onSale: values.onSale === "true" };
-      // await createAd(formData as unknown as Ad).unwrap();
-      console.log(formData);
+      await createProduct(formData as unknown as any).unwrap();
       reset({
         title: "",
         price: "",

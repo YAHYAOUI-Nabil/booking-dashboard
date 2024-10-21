@@ -50,13 +50,13 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="flex justify-center mt-4 space-x-4">
+    <div className="flex justify-center my-4 space-x-4 p-1">
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex items-center justify-center w-6 h-6 bg-white text-black rounded-md shadow-md cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 disabled:opacity-50"
+        className="flex items-center justify-center w-6 h-6 bg-white text-black rounded-md shadow-md cursor-pointer hover:bg-[#0033FF] hover:text-white focus:outline-none focus:ring focus:border-blue-300 disabled:opacity-50"
       >
-        <FaChevronLeft className="w-5 h-5" />
+        <FaChevronLeft className="w-3 h-3" />
       </button>
 
       {visiblePageNumbers?.map((pageNumber, index) => (
@@ -76,9 +76,9 @@ const Pagination: React.FC<PaginationProps> = ({
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex items-center justify-center w-6 h-6 bg-white text-black rounded-md shadow-md cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 disabled:opacity-50"
+        className="flex items-center justify-center w-6 h-6 bg-white text-black rounded-md shadow-md cursor-pointer hover:bg-[#0033FF] hover:text-white focus:outline-none focus:ring focus:border-blue-300 disabled:opacity-50"
       >
-        <FaChevronRight className="w-5 h-5" />
+        <FaChevronRight className="w-3 h-3" />
       </button>
     </div>
   );

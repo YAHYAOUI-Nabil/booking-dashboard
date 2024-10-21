@@ -56,11 +56,11 @@ const CommonPopup = ({
                 <DialogPanel
                   className={classNames(
                     heightwidth ? heightwidth : "",
-                    "relative transform  rounded-lg bg-white  text-left shadow-xl transition-all p-6 "
+                    "relative transform  rounded-lg bg-white  text-left shadow-xl transition-all p-8"
                   )}
                 >
                   <div className="sm:flex sm:items-start w-full">
-                    <div className="text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
+                    <div className="text-center sm:text-left w-full">
                       <DialogTitle className="text-lg font-semibold leading-6 text-gray-900 mb-6">
                         <div className="flex justify-between">
                           <span className="text-[color:var(--gray-900,#101828)] text-xl not-italic font-semibold leading-[30px]">
@@ -78,7 +78,7 @@ const CommonPopup = ({
                         </div>
                         <div className="text-sm">{subtitle}</div>
                       </DialogTitle>
-                      <div className="mr-5">{children}</div>
+                      <div className="">{children}</div>
                     </div>
                   </div>
                 </DialogPanel>

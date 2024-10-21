@@ -1,22 +1,22 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import bgImage from "../../assets/booking-bg.jpg";
 import { useLoginMutation } from "../../app/api/public/auth";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../app/store/authSlice";
 import { useEffect } from "react";
 import { useAuth } from "../../app/hooks/useAuth";
+import { LoginInput } from "../../app/models/User";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const auth = useAuth();
-  const [login] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
-    control,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     handleSubmit,
     register,
     setError,
@@ -33,16 +33,25 @@ const Login = () => {
     ),
   });
 
-  const submit = async (values: any) => {
+  const submit = async (values: LoginInput) => {
     try {
       const user = await login(values).unwrap();
-      sessionStorage.setItem("usersession", "user.accessToken");
-      localStorage.setItem("userlocal", "user.accessToken");
-
       dispatch(setCurrentUser(user));
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toast.error("Login failed", {
+        position: "top-center",
+        duration: 2000,
+        style: { border: "4px solid #F92F60", borderRadius: "0px" },
+      });
+      setError("username", {
+        type: "manual",
+        message: "Invalid username or password",
+      });
+      setError("password", {
+        type: "manual",
+        message: "Invalid username or password",
+      });
     }
   };
 
@@ -52,18 +61,21 @@ const Login = () => {
 
   return (
     <div
-      style={{ backgroundImage: `url(${bgImage})` }}
+      style={{ backgroundImage: `url(./assets/auth-image.jpg)` }}
       className="w-screen h-screen bg-cover bg-no-repeat flex justify-center items-center"
     >
+      <Toaster />
       <form
         onSubmit={handleSubmit(submit)}
-        className="flex flex-col gap-6 p-6 xl:w-1/4 lg:w-1/3 md:w-1/2 w-5/6 rounded-md mx-auto bg-[#EEEEEE]"
+        className="flex flex-col gap-6 p-6 xl:w-1/4 lg:w-1/3 md:w-1/2 w-5/6 rounded-md mx-auto bg-white"
       >
         <div className="relative z-0 w-full group">
           <input
             type="text"
             id="username"
-            className="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-purple-600 transition-colors duration-200 delay-0 ease-in-expo peer"
+            className={`${
+              errors.username ? "border-red-600" : "border-[#2581AF]"
+            } block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-[#16A7A0] transition-colors duration-200 delay-0 ease-in-expo peer`}
             placeholder=" "
             {...register("username")}
           />
@@ -79,7 +91,9 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            className="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-purple-600 transition-colors duration-200 delay-0 ease-in-expo peer"
+            className={`${
+              errors.password ? "border-red-600" : "border-[#2581AF]"
+            } block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-[#16A7A0] transition-colors duration-200 delay-0 ease-in-expo peer`}
             placeholder=" "
             {...register("password")}
           />
@@ -94,9 +108,12 @@ const Login = () => {
         <div>
           <button
             type="submit"
-            className="w-full rounded-md bg-gradient-to-tr from-purple-600 to-purple-200 p-2 text-white"
+            disabled={isLoading}
+            className={`w-full rounded-md bg-gradient-to-tr from-[#2581AF] to-[#16A7A0] p-2 text-white ${
+              isLoading && "cursor-not-allowed"
+            }`}
           >
-            Login
+            {isLoading ? "Loading..." : "Login"}
           </button>
         </div>
       </form>
