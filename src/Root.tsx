@@ -15,9 +15,7 @@ const Root = () => {
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <BrowserRouter>
-              <React.Suspense fallback={null}>
-                <App />
-              </React.Suspense>
+              <App />
             </BrowserRouter>
           </PersistGate>
         </Provider>

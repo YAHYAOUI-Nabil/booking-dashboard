@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import PrivateOutlet from "./utils/PrivateOutlet";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const AuthenticationPage = React.lazy(() => import("./pages/auth/Login"));
 const MainLayout = React.lazy(() => import("./pages/dashboard/MainLayout"));
@@ -21,7 +22,7 @@ const AppRoutes = () => {
     <Routes>
       <Route
         element={
-          <React.Suspense fallback={null}>
+          <React.Suspense fallback={<LoadingSpinner />}>
             <AuthenticationPage />
           </React.Suspense>
         }
@@ -30,14 +31,14 @@ const AppRoutes = () => {
       <Route
         path="/"
         element={
-          <React.Suspense fallback={null}>
+          <React.Suspense fallback={<LoadingSpinner />}>
             <PrivateOutlet />
           </React.Suspense>
         }
       >
         <Route
           element={
-            <React.Suspense fallback={null}>
+            <React.Suspense fallback={<LoadingSpinner />}>
               <MainLayout />
             </React.Suspense>
           }
@@ -45,7 +46,7 @@ const AppRoutes = () => {
         >
           <Route
             element={
-              <React.Suspense fallback={null}>
+              <React.Suspense fallback={<LoadingSpinner />}>
                 <Kpi />
               </React.Suspense>
             }
@@ -53,7 +54,7 @@ const AppRoutes = () => {
           />
           <Route
             element={
-              <React.Suspense fallback={null}>
+              <React.Suspense fallback={<LoadingSpinner />}>
                 <Products />
               </React.Suspense>
             }
@@ -62,7 +63,7 @@ const AppRoutes = () => {
 
           <Route
             element={
-              <React.Suspense fallback={null}>
+              <React.Suspense fallback={<LoadingSpinner />}>
                 <Users />
               </React.Suspense>
             }
@@ -70,7 +71,7 @@ const AppRoutes = () => {
           />
           <Route
             element={
-              <React.Suspense fallback={null}>
+              <React.Suspense fallback={<LoadingSpinner />}>
                 <Articles />
               </React.Suspense>
             }
@@ -78,7 +79,7 @@ const AppRoutes = () => {
           />
           <Route
             element={
-              <React.Suspense fallback={null}>
+              <React.Suspense fallback={<LoadingSpinner />}>
                 <VistedProducts />
               </React.Suspense>
             }
